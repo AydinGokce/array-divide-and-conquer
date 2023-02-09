@@ -37,6 +37,7 @@ void test_huge_array() {
 void test_empty_array() {
     if(test_array(0, 10, 10) != 0) {
         perror("failed testing empty array");
+        exit(1);
     }
 }
 
@@ -47,6 +48,7 @@ void test_empty_array() {
 void test_misaligned_array() {
     if(test_array(8, 10, 3) != 0) {
         perror("failed testing misaligned array");
+        exit(1);
     }
 }
 
@@ -57,6 +59,7 @@ void test_misaligned_array() {
 void test_aligned_array() {
     if(test_array(9, 10, 3) != 0) {
         perror("failed testing aligned array");
+        exit(1);
     }
 }
 
@@ -67,6 +70,7 @@ void test_aligned_array() {
 void test_threads_gt_length() {
     if(test_array(5, 10, 10) != 0) {
         perror("failed testing when more threads than indices");
+        exit(1);
     }
 }
 
@@ -78,5 +82,6 @@ void test_known_quantity() {
     int known_arr[10] = {1,2,3,4,5,6,7,8,9,0};
     if(sum_array(known_arr, 10, 6) != 45) {
         perror("failed testing against known quantity");
+        exit(1);
     }
 }
