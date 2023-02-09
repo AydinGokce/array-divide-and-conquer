@@ -17,9 +17,10 @@ void exit_with_instructions(void);
  */
 int main(int argc, char* argv[]) {
 
-    if(argc == 2 && !strcmp(argv[1], "--demo")) {
+    if((argc == 2 || argc == 3) && !strcmp(argv[1], "--demo")) {
+        
         long demo_array_length = 1e9;
-        int n_solver_threads = 16;
+        int n_solver_threads = argc == 3 ? atoi(argv[2]) : 5;
 
         printf("generating array of length %ld...\n", demo_array_length);
         int *arr = get_random_array(demo_array_length, 3);
@@ -65,6 +66,6 @@ int main(int argc, char* argv[]) {
 }
 
 void exit_with_instructions() {
-    printf("usage: test_driver [--demo]");
+    printf("usage: test_driver [--demo] [num_cores]\n");
     exit(0);
 }
